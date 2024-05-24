@@ -15,6 +15,10 @@ This project creates a Docker container that fetches data from the Hugging Face 
 
 ## Usage
 
+You have two options to use this project: either build the Docker image locally from the source code or pull the pre-built image from Docker Hub.
+
+### Option 1: Build the Docker Image Locally
+
 1. **Clone the repository:**
     ```sh
     git clone https://github.com/your-username/huggingface-report-generator.git
@@ -38,8 +42,28 @@ This project creates a Docker container that fetches data from the Hugging Face 
     - Generate the report and save it to the `report` directory on the host machine.
     - Automatically remove the container after it stops.
 
-4. **Check the report:**
-    The report will be saved in the `report` directory as `top_10_models.txt`.
+### Option 2: Pull the Docker Image from Docker Hub
+
+1. **Pull the Docker image:**
+    ```sh
+    docker pull sanjayvishva/huggingface-report
+    ```
+
+2. **Run the Docker container:**
+    ```sh
+    mkdir -p $(pwd)/report
+    docker run --rm -v $(pwd)/report:/report sanjayvishva/huggingface-report
+    ```
+
+    This command will:
+    - Run the container from the `sanjayvishva/huggingface-report` image.
+    - Mount the `report` directory from the current working directory to `/report` inside the container.
+    - Generate the report and save it to the `report` directory on the host machine.
+    - Automatically remove the container after it stops.
+
+### Check the Report
+
+After running the container, the report will be saved in the `report` directory as `top_10_models.txt`.
 
 ## Files
 
